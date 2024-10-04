@@ -1,0 +1,23 @@
+# redis-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-instance
+  labels:
+    app: redis-instance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-instance
+  template:
+    metadata:
+      labels:
+        app: redis-instance
+    spec:
+      containers:
+      - name: redis
+        image: redis:6.2-alpine
+        ports:
+        - containerPort: 6379
+
